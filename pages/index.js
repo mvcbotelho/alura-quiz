@@ -1,5 +1,9 @@
+import { useRouter } from 'next/router';
+
 import styled from 'styled-components';
 import db from '../db.json';
+
+import Form from '../src/components/Form';
 
 import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
@@ -26,6 +30,7 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Home() {
+  const router = useRouter();
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
@@ -36,6 +41,10 @@ export default function Home() {
           </Widget.Header>
           <Widget.Content>
             <p>{db.description}</p>
+            <Form onClick={() => router.push('/quiz')}>
+              <input type="text" placeholder="Digite o seu nome bruxo" />
+              <button type="submit">Jogar</button>
+            </Form>
           </Widget.Content>
         </Widget>
         <Widget>
@@ -46,7 +55,7 @@ export default function Home() {
         </Widget>
         <Footer />
       </QuizContainer>
-      <GitHubCorner projectUrl="https://github.com/omariosouto" />
+      <GitHubCorner projectUrl="https://github.com/mvcbotelho/alura-quiz" />
     </QuizBackground>
   );
 }
