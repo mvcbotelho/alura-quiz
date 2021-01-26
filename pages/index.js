@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import styled from 'styled-components';
@@ -34,18 +33,6 @@ export default function Home() {
   const router = useRouter();
   return (
     <>
-      <Head>
-        <title>{db.title}</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta property="og:title" content="Sonserina Quiz" />
-        <meta property="og:site_name" content="Sonserina Quiz" />
-        <meta
-          property="og:url"
-          content="https://alura-quiz.mvcbotelho.vercel.app/"
-        />
-        <meta property="article:author" content="Marcus Botelho" />
-      </Head>
-
       <QuizBackground backgroundImage={db.bg}>
         <QuizContainer>
           <QuizLogo />
