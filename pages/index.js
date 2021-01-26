@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import styled from 'styled-components';
@@ -32,30 +33,44 @@ export const QuizContainer = styled.div`
 export default function Home() {
   const router = useRouter();
   return (
-    <QuizBackground backgroundImage={db.bg}>
-      <QuizContainer>
-        <QuizLogo />
-        <Widget>
-          <Widget.Header>
-            <h1>{db.title}</h1>
-          </Widget.Header>
-          <Widget.Content>
-            <p>{db.description}</p>
-            <Form onClick={() => router.push('/quiz')}>
-              <input type="text" placeholder="Digite o seu nome bruxo" />
-              <button type="submit">Jogar</button>
-            </Form>
-          </Widget.Content>
-        </Widget>
-        <Widget>
-          <Widget.Content>
-            <h2>Quizes da Galera</h2>
-            <p>Quiz</p>
-          </Widget.Content>
-        </Widget>
-        <Footer />
-      </QuizContainer>
-      <GitHubCorner projectUrl="https://github.com/mvcbotelho/alura-quiz" />
-    </QuizBackground>
+    <>
+      <Head>
+        <title>{db.title}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:title" content="Sonserina Quiz" />
+        <meta property="og:site_name" content="Sonserina Quiz" />
+        <meta
+          property="og:url"
+          content="https://alura-quiz.mvcbotelho.vercel.app/"
+        />
+        <meta property="article:author" content="Marcus Botelho" />
+      </Head>
+
+      <QuizBackground backgroundImage={db.bg}>
+        <QuizContainer>
+          <QuizLogo />
+          <Widget>
+            <Widget.Header>
+              <h1>{db.title}</h1>
+            </Widget.Header>
+            <Widget.Content>
+              <p>{db.description}</p>
+              <Form onClick={() => router.push('/quiz')}>
+                <input type="text" placeholder="Digite o seu nome bruxo" />
+                <button type="submit">Jogar</button>
+              </Form>
+            </Widget.Content>
+          </Widget>
+          <Widget>
+            <Widget.Content>
+              <h2>Quizes da Galera</h2>
+              <p>Quiz</p>
+            </Widget.Content>
+          </Widget>
+          <Footer />
+        </QuizContainer>
+        <GitHubCorner projectUrl="https://github.com/mvcbotelho/alura-quiz" />
+      </QuizBackground>
+    </>
   );
 }
