@@ -1,4 +1,3 @@
-import { backgrounds } from 'polished';
 import React from 'react';
 
 export default function Quiz() {

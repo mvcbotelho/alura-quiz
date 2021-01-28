@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+
+import React from 'react';
 import PropTypes from 'prop-types';
 
 function Logo({ className }) {
