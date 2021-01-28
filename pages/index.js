@@ -32,7 +32,14 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Home() {
+  const [name, setName] = React.useState('');
   const router = useRouter();
+
+  const startGame = (event) => {
+    event.preventDefault();
+    router.push(`/quiz?name=${name}`);
+  };
+
   return (
     <>
       <QuizBackground backgroundImage={db.bg}>
@@ -44,9 +51,16 @@ export default function Home() {
             </Widget.Header>
             <Widget.Content>
               <p>{db.description}</p>
-              <Form onClick={() => router.push('/quiz')}>
-                <input type="text" placeholder="Digite o seu nome bruxo" />
-                <button type="submit">Jogar</button>
+              <Form onSubmit={startGame}>
+                <input
+                  type="text"
+                  placeholder="Digite o seu nome bruxo"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                />
+                <button type="submit" disabled={name.length === 0}>
+                  Jogar
+                </button>
               </Form>
             </Widget.Content>
           </Widget>
